@@ -1,7 +1,34 @@
-<h1>Cocktails menu</h1>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
+  <%= link_to "#", class: "navbar-brand" do %>
+    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+  <% end %>
 
-<%= link_to 'Add a cocktail', new_cocktail_path %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<% @cocktails.each do |cocktail| %>
-  <h3><%= link_to cocktail.name, cocktail_path(cocktail) %></h3>
-<% end %>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item btn">
+        <%= link_to "Add a cocktail", new_cocktail_path, class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<%#= link_to 'Add a cocktail', new_cocktail_path %>
+
+<div class="container">
+  <div class="title text-center">
+    <h1>Cocktails menu</h1>
+  </div>
+  <div class="cards">
+    <% @cocktails.each do |cocktail| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cocktail.photo_url %>)">
+        <%= link_to cocktail.name, cocktail_path(cocktail) %>
+      </div>
+    <% end %>
+  </div>
+</div>
