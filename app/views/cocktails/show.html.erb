@@ -22,7 +22,11 @@
 
 <div class="container">
   <div class="cocktail-show">
-    <img <%= image_tag @cocktail.photo_url, alt: "#{@cocktail.name}" %>
+    <% if @cocktail.photo_url %>
+      <%= image_tag @cocktail.photo_url, alt: "#{@cocktail.name}" %>
+    <% else %>
+    <%= cl_image_tag(@cocktail.photo.key) %>
+    <% end %>
     <div class="cocktail-body">
       <h1><%= @cocktail.name %></h1>
       <% @cocktail.doses.each do |dose| %>
@@ -32,8 +36,4 @@
       <% end %>
     </div>
   </div>
-  <%= cl_image_tag("qmyrt7ikskofldwds51b",
-      width: 400, height: 300, crop: :fill) %>
-
-
 </div>
